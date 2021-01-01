@@ -62,6 +62,7 @@ p {
     color: #fff;
     letter-spacing: 2px;
     text-transform: uppercase;
+    cursor: pointer;
 }
 
 .btn-reverse {
@@ -77,7 +78,7 @@ p {
     width: 1200px;
     max-width: 100%;
     margin: 0 auto;
-    padding: 20px;
+    padding: 0 20px;
 }
 
 .flex {
@@ -92,12 +93,32 @@ p {
 
 .flex > div {
     flex: 1;
+    width: 100%;
 }
 
 /* NAV STYLING */
 
+nav {
+    padding: 20px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    z-index: 100;
+    background-color: #fff;
+}
+
+nav .hamburger {
+    display: none;
+}
+
+nav .hamburger:focus {
+    outline: none;
+}
+
 nav ul {
     display: flex;
+    align-items: center;
     list-style: none;
     padding: 0;
 }
@@ -122,6 +143,10 @@ header {
     margin-bottom: 250px;
 }
 
+header > * {
+    z-index: 1;
+}
+
 header::after {
     content: '';
     background-image: url('./images/bg-pattern-intro-right-desktop.svg');
@@ -130,8 +155,9 @@ header::after {
     position: absolute;
     top: 0;
     right: 0;
-    width: 100%;
     height: 100%;
+    width: 50%;
+    z-index: 2;
 }
 
 header::before {
@@ -142,8 +168,9 @@ header::before {
     position: absolute;
     bottom: -50%;
     left: 0;
-    width: 100%;
     height: 100%;
+    width: 50%;
+    z-index: 0;
 }
 
 header p {
@@ -157,22 +184,12 @@ header p {
 
 .bg-violet {
     background-color: var(--dark-violet);
-    padding: 70px;
-    position: relative;
-    margin: 100px auto;
-}
-
-.bg-violet::before {
-    content: '';
     background-image: url('./images/bg-pattern-how-we-work-desktop.svg');
     background-repeat: no-repeat;
     background-position: top right;
-    background-size: 70% 100%;
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 50%;
-    height: 100%;
+    padding: 70px;
+    position: relative;
+    margin: 100px auto;
 }
 
 .bg-violet h2 {
@@ -190,8 +207,13 @@ header p {
 
 footer {
     background-color: var(--very-light-gray);
-    padding: 30px 0;
+    background-image: url('./images/bg-pattern-footer-desktop.svg');
+    background-repeat: no-repeat;
+    background-position: top left;
+    padding: 60px 30px;
+    position: relative;
 }
+
 
 footer h4 {
     color: var(--dark-grayish-violet);
@@ -204,7 +226,7 @@ footer ul {
     list-style: none;
 }
 
-footer ul.flex li {
+footer ul.flex li:not(:first-child) {
     margin-left: 15px; 
 }
 
@@ -221,4 +243,127 @@ footer li a {
 .border-bottom {
     border-bottom: 1px solid var(--dark-grayish-violet);
     margin-bottom: 30px;
+}
+
+/* MOBILE STYLES  */
+
+@media screen and (max-width: 768px) {
+
+    body {
+        text-align: center;
+    }
+
+    .flex {
+        flex-direction: column;
+    }
+
+    nav {
+        padding-top: 20px;
+    }
+
+    nav .hamburger {
+        background-color: transparent;
+        border: 0;
+        cursor: pointer;
+        display: flex;
+    }
+
+    nav .hamburger .close {
+        display: none;
+    }
+
+    nav .hamburger.show .open {
+        display: none;
+    }
+
+    nav .hamburger.show .close {
+        display: block;
+    }
+
+    nav .flex {
+        flex-direction: row;
+    }
+
+    nav .img-wrapper {
+        text-align: left;
+    }
+
+    nav ul {
+        display: none;
+    }
+
+    nav ul.show {
+        background-color: var(--dark-violet);
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        margin: 0;
+        top: 70px;
+        left: 0;
+        width: 100vw;
+        height: calc(100vh - 70px);
+        z-index: 100;
+    }
+
+    nav ul li {
+        margin: 20px 0;
+    }
+
+    nav ul a {
+        color: #fff;
+    }
+
+    .btn-reverse {
+        border-color: white;
+        color: white;
+    }
+
+    header {
+        padding-top: 0;
+        margin-bottom: 50px;
+    }
+
+    header::before,
+    header::after {
+        display: none;
+    }
+
+    .ivan {
+        display: inline-block;
+        margin-left: -20px;
+        margin-bottom: -10px;
+        max-width: calc(100% + 40px);
+    }
+
+    .reverse-mobile {
+        flex-direction: column-reverse;
+    }
+
+    .line-top::before {
+        left: 50%;
+        transform: translate(-50%);
+    }
+
+    .bg-violet {
+        background-image: url(./images/bg-pattern-how-we-work-mobile.svg);
+    }
+
+    .bg-violet h2 {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+    footer {
+        background-image: url(./images/bg-pattern-footer-mobile.svg);
+        background-size: 100%;
+        background-position: cover;
+    }
+
+    footer ul.flex {
+        flex-direction: row; 
+    
+    }
+    footer .flex div {
+        width: 100%;
+    }
 }

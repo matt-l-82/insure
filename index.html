@@ -22,11 +22,16 @@
 <nav>
   <div class="container">
     <div class="flex">
-      <div>
+      <div class="img-wrapper">
         <img src="./images/logo.svg" alt="logo">
       </div>
 
-    <ul>
+      <button class="hamburger" id="hamburger">
+        <img class="open" src="./images/icon-hamburger.svg" alt="menu button">
+        <img class="close" src="./images/icon-close.svg" alt="close button">
+      </button>
+
+    <ul id="menu">
       <li><a href="#">How we work</a></li>
       <li><a href="#">Blog</a></li>
       <li><a href="#">Account</a></li>
@@ -41,7 +46,7 @@
 
 <header>
   <div class="container">
-    <div class="flex align-start">
+    <div class="flex align-start reverse-mobile">
       <div>
         <h1 class="line-top">
           Humanizing your insurance.
@@ -162,5 +167,6 @@
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
     Coded by <a href="#">Matt Laws</a>.
   </div>
+  <script src="script.js"></script>
 </body>
 </html>
